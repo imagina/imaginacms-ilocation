@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ilocations__cities', function (Blueprint $table) {
+        Schema::create('ilocation__cities', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('code')->nullable();
             $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('ilocations__countries')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('ilocation__countries')->onDelete('cascade');
             $table->integer('province_id')->unsigned();
-            $table->foreign('province_id')->references('id')->on('ilocations__provinces')->onDelete('cascade');
+            $table->foreign('province_id')->references('id')->on('ilocation__provinces')->onDelete('cascade');
 
             // Audit fields
             $table->timestamps();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ilocations__cities');
+        Schema::dropIfExists('ilocation__cities');
     }
 };

@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ilocations__provinces', function (Blueprint $table) {
+        Schema::create('ilocation__provinces', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->text('iso_2')->nullable();
             $table->integer('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('ilocations__countries')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('ilocation__countries')->onDelete('cascade');
 
             // Audit fields
             $table->timestamps();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ilocations__provinces');
+        Schema::dropIfExists('ilocation__provinces');
     }
 };

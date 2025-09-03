@@ -8,7 +8,7 @@ use Imagina\Icore\Models\CoreModel;
 class Locatable extends CoreModel
 {
 
-  protected $table = 'ilocations__locatables';
+  protected $table = 'ilocation__locatables';
   public string $transformer = 'Modules\Ilocation\Transformers\LocatableTransformer';
   public string $repository = 'Modules\Ilocation\Repositories\LocatableRepository';
   public array $requestValidation = [

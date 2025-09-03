@@ -11,5 +11,5 @@ class CountryTranslation extends Model
     'name',
     'full_name'
   ];
-  protected $table = 'ilocations__country_translations';
+  protected $table = 'ilocation__country_translations';
 }

@@ -10,5 +10,5 @@ class ProvinceTranslation extends Model
   protected $fillable = [
     'name'
   ];
-  protected $table = 'ilocations__province_translations';
+  protected $table = 'ilocation__province_translations';
 }

@@ -6,7 +6,7 @@
     "keywords": ["ilocation"],
     "priority": 0,
     "providers": [
-        "Modules\\Ilocation\\Providers\\IlocationsServiceProvider"
+        "Modules\\Ilocation\\Providers\\IlocationServiceProvider"
     ],
     "files": []
 }

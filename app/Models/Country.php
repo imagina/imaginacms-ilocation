@@ -11,7 +11,7 @@ class Country extends CoreModel
 {
   use Translatable;
 
-  protected $table = 'ilocations__countries';
+  protected $table = 'ilocation__countries';
   public string $transformer = 'Modules\Ilocation\Transformers\CountryTransformer';
   public string $repository = 'Modules\Ilocation\Repositories\CountryRepository';
   public array $requestValidation = [

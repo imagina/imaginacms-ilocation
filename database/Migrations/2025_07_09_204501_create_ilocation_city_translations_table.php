@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ilocations__city_translations', function (Blueprint $table) {
+        Schema::create('ilocation__city_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('city_id')->unsigned();
             $table->string('locale')->index();
             $table->unique(['city_id', 'locale']);
-            $table->foreign('city_id')->references('id')->on('ilocations__cities')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('ilocation__cities')->onDelete('cascade');
         });
     }
 
@@ -32,9 +32,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('ilocations__city_translations', function (Blueprint $table) {
+        Schema::table('ilocation__city_translations', function (Blueprint $table) {
             $table->dropForeign(['city_id']);
         });
-        Schema::dropIfExists('ilocations__city_translations');
+        Schema::dropIfExists('ilocation__city_translations');
     }
 };

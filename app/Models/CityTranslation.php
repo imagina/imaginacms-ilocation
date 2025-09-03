@@ -10,5 +10,5 @@ class CityTranslation extends Model
   protected $fillable = [
     'name'
   ];
-  protected $table = 'ilocations__city_translations';
+  protected $table = 'ilocation__city_translations';
 }

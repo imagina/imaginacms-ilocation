@@ -12,7 +12,7 @@ class Province extends CoreModel
 {
   use Translatable;
 
-  protected $table = 'ilocations__provinces';
+  protected $table = 'ilocation__provinces';
   public string $transformer = 'Modules\Ilocation\Transformers\ProvinceTransformer';
   public string $repository = 'Modules\Ilocation\Repositories\ProvinceRepository';
   public array $requestValidation = [

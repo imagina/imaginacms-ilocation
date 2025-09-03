@@ -11,7 +11,7 @@ class City extends CoreModel
 {
   use Translatable;
 
-  protected $table = 'ilocations__cities';
+  protected $table = 'ilocation__cities';
   public string $transformer = 'Modules\Ilocation\Transformers\CityTransformer';
   public string $repository = 'Modules\Ilocation\Repositories\CityRepository';
   public array $requestValidation = [

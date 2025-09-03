@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ilocations__countries', function (Blueprint $table) {
+        Schema::create('ilocation__countries', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('status')->default('1');
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ilocations__countries');
+        Schema::dropIfExists('ilocation__countries');
     }
 };

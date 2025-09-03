@@ -30,7 +30,7 @@ use Modules\Ilocation\Models\Locatable;
 
 
 
-class IlocationsServiceProvider extends ServiceProvider
+class IlocationServiceProvider extends ServiceProvider
 {
     use PathNamespace;
 

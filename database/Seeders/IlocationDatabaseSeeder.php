@@ -4,7 +4,7 @@ namespace Modules\Ilocation\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class IlocationsDatabaseSeeder extends Seeder
+class IlocationDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
