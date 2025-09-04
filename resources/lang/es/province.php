@@ -1,10 +1,13 @@
 <?php
 
 return [
-    'button' => [
-    ],
-    'messages' => [
-    ],
-    'validation' => [
-    ],
+  'button' => [
+  ],
+  'messages' => [
+  ],
+  'validation' => [
+  ],
+  'settings' => [
+    'availableProvinces' => 'Departamentos disponibles'
+  ]
 ];
