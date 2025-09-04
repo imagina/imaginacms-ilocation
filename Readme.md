@@ -20,7 +20,7 @@
 - Add relation:
 
 ```php
-public function locations()
+public function locatable()
 {
     if (isModuleEnabled('Ilocation')) {
         return app(\Modules\Ilocation\Relations\LocationsRelation::class)->resolve($this);
