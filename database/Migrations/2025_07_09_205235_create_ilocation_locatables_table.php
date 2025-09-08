@@ -4,43 +4,44 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up(): void
-    {
-        Schema::create('ilocation__locatables', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('entity_type', 255);
-            $table->integer('entity_id');
-            $table->integer('country_id')->unsigned()->nullable();
-            $table->foreign('country_id')->references('id')->on('ilocation__countries')->onDelete('restrict');
-            $table->integer('province_id')->unsigned()->nullable();
-            $table->foreign('province_id')->references('id')->on('ilocation__provinces')->onDelete('restrict');
-            $table->integer('city_id')->unsigned()->nullable();
-            $table->foreign('city_id')->references('id')->on('ilocation__cities')->onDelete('restrict');
-            $table->string('address')->nullable();
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
+return new class extends Migration {
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up(): void
+  {
+    Schema::create('ilocation__locatables', function (Blueprint $table) {
+      $table->engine = 'InnoDB';
+      $table->increments('id');
+      $table->string('system_name')->default('default')->after('id');
+      $table->string('entity_type', 255)->default('__global__');
+      $table->integer('entity_id')->default(0);
+      $table->integer('country_id')->unsigned()->nullable();
+      $table->foreign('country_id')->references('id')->on('ilocation__countries')->onDelete('restrict');
+      $table->integer('province_id')->unsigned()->nullable();
+      $table->foreign('province_id')->references('id')->on('ilocation__provinces')->onDelete('restrict');
+      $table->integer('city_id')->unsigned()->nullable();
+      $table->foreign('city_id')->references('id')->on('ilocation__cities')->onDelete('restrict');
+      $table->string('address')->nullable();
+      $table->string('lat')->nullable();
+      $table->string('lng')->nullable();
+      $table->unique(['system_name', 'entity_type', 'entity_id'], 'locatables_unique');
 
-            // Audit fields
-            $table->timestamps();
-            $table->auditStamps();
-        });
-    }
+      // Audit fields
+      $table->timestamps();
+      $table->auditStamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('ilocation__locatables');
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down(): void
+  {
+    Schema::dropIfExists('ilocation__locatables');
+  }
 };

@@ -4,6 +4,7 @@ namespace Modules\Ilocation\Models;
 
 use Astrotomic\Translatable\Translatable;
 use Imagina\Icore\Models\CoreModel;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Locatable extends CoreModel
 {
@@ -26,6 +27,7 @@ class Locatable extends CoreModel
     'deleted' => []
   ];
   protected $fillable = [
+    'system_name',
     'entity_id',
     'entity_type',
     'city_id',
