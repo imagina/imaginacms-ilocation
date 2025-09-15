@@ -24,8 +24,8 @@ class StoreLocatable
         $countryId = $params['locatable']['country_id'] ?? null;
         $provinceId = $params['locatable']['province_id'] ?? null;
         $address = $params['locatable']['address'] ?? null;
-        $lat = $params['locatable']['lat'] ?? null;
-        $lng = $params['locatable']['lng'] ?? null;
+        $lat = $params['locatable']['latitude'] ?? null;
+        $lng = $params['locatable']['longitude'] ?? null;
 
         if ($cityId || $countryId || $provinceId || $lat || $lng || $address) {
             $locatableRepository = app('Modules\Ilocation\Repositories\LocatableRepository');
@@ -37,8 +37,8 @@ class StoreLocatable
                 'country_id' => $countryId,
                 'province_id' => $provinceId,
                 'address' => $address,
-                'lat' => $lat,
-                'lng' => $lng,
+                'latitude' => $lat,
+                'longitude' => $lng,
             ]);
         }
     }
