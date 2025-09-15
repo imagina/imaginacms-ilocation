@@ -47,6 +47,10 @@ class EloquentLocatableRepository extends EloquentCoreRepository implements Loca
      *
      */
 
+    if (!isset($filter->entityType) || empty($filter->entityId)) {
+      $query->where('entity_type', '__global__')->where('entity_id', '0');
+    }
+
     //Response
     return $query;
   }

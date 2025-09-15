@@ -3,11 +3,12 @@
 namespace Modules\Ilocation\Models;
 
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Imagina\Icore\Models\CoreModel;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Locatable extends CoreModel
 {
+  use Translatable;
 
   protected $table = 'ilocation__locatables';
   public string $transformer = 'Modules\Ilocation\Transformers\LocatableTransformer';
@@ -26,6 +27,10 @@ class Locatable extends CoreModel
     'deleting' => [],
     'deleted' => []
   ];
+
+  public $translatedAttributes = [
+    'title', 'description'
+  ];
   protected $fillable = [
     'system_name',
     'entity_id',
@@ -33,8 +38,23 @@ class Locatable extends CoreModel
     'city_id',
     'province_id',
     'country_id',
-    'lat',
-    'lng',
+    'latitude',
+    'longitude',
     'address'
   ];
+
+  public function country(): BelongsTo
+  {
+    return $this->belongsTo(Country::class);
+  }
+
+  public function province(): BelongsTo
+  {
+    return $this->belongsTo(Province::class);
+  }
+
+  public function city(): BelongsTo
+  {
+    return $this->belongsTo(City::class);
+  }
 }
