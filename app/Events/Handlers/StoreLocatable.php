@@ -35,6 +35,9 @@ class StoreLocatable
         'entityType' => get_class($model),
         'entityId' => $model->id,
       ], [
+        'system_name' => $systemName,
+        'entity_type' => get_class($model),
+        'entity_id' => $model->id,
         'city_id' => $cityId,
         'country_id' => $countryId,
         'province_id' => $provinceId,
