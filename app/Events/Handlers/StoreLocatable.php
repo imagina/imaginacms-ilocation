@@ -31,13 +31,10 @@ class StoreLocatable
       $locatableRepository = app('Modules\Ilocation\Repositories\LocatableRepository');
       $systemName = strtolower(str_replace('\\', '_', get_class($model))) . '_' . $model->id;
       $locatableRepository->updateOrCreate([
-        'systemName' => $systemName,
-        'entityType' => get_class($model),
-        'entityId' => $model->id,
-      ], [
         'system_name' => $systemName,
         'entity_type' => get_class($model),
         'entity_id' => $model->id,
+      ], [
         'city_id' => $cityId,
         'country_id' => $countryId,
         'province_id' => $provinceId,
