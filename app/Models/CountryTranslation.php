@@ -8,8 +8,8 @@ class CountryTranslation extends Model
 {
   public $timestamps = false;
   protected $fillable = [
-    'name',
-    'full_name'
+    'title',
+    'full_title'
   ];
   protected $table = 'ilocation__country_translations';
 }

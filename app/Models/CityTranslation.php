@@ -8,7 +8,7 @@ class CityTranslation extends Model
 {
   public $timestamps = false;
   protected $fillable = [
-    'name'
+    'title'
   ];
   protected $table = 'ilocation__city_translations';
 }

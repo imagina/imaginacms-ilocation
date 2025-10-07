@@ -8,7 +8,7 @@ class ProvinceTranslation extends Model
 {
   public $timestamps = false;
   protected $fillable = [
-    'name'
+    'title'
   ];
   protected $table = 'ilocation__province_translations';
 }

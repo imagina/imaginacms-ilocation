@@ -30,7 +30,7 @@ class Province extends CoreModel
     'deleted' => []
   ];
   public array $translatedAttributes = [
-    'name'
+    'title'
   ];
   protected $fillable = [
     'iso_2',
@@ -53,16 +53,16 @@ class Province extends CoreModel
     return $this->hasMany(City::class);
   }
 
-  public function name(): Attribute
+  public function title(): Attribute
   {
     return Attribute::get(function () {
       $currentTranslations = $this->getTranslation(locale());
-      if (empty($currentTranslations) || empty($currentTranslations->toArray()["name"])) {
+      if (empty($currentTranslations) || empty($currentTranslations->toArray()["title"])) {
         $model = $this->getTranslation(app()->getLocale());
         if (empty($model)) return "";
-        return $model->toArray()["name"] ?? "";
+        return $model->toArray()["title"] ?? "";
       }
-      return $currentTranslations->toArray()["name"];
+      return $currentTranslations->toArray()["title"];
     });
   }
 }

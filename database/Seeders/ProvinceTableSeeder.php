@@ -25,7 +25,7 @@ class ProvinceTableSeeder extends Seeder
         if (!isset($currentProvince->id)) {
           $country = $countries->where('iso_2', $province->country)->first();
           Province::create([
-            'name' => $province->region,
+            'title' => $province->region,
             'iso_2' => $province->iso_2,
             'country_id' => $country->id,
           ]);

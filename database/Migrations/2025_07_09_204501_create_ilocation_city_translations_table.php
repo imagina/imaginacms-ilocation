@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('ilocation__city_translations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name');
+            $table->string('title');
 
             $table->integer('city_id')->unsigned();
             $table->string('locale')->index();
