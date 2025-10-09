@@ -46,14 +46,14 @@ class EloquentCityRepository extends EloquentCoreRepository implements CityRepos
      * if (isset($filter->status)) $query->where('status', $filter->status);
      *
      */
-
+    /*
     if (isset($filter->search)) {
       $query->where(function ($query) use ($filter) {
         $query->whereHas('translations', function (Builder $q) use ($filter) {
-          $q->where('name', 'like', "%{$filter->search}%");
+          $q->where('title', 'like', "%{$filter->search}%");
         });
       })->orWhere('id', 'like', '%' . $filter->search . '%');
-    }
+    } */
 
     $availableCountries = json_decode(json_encode(setting("ilocation::availableCountries", null, "[]")));
     /*=== SETTINGS ===*/
