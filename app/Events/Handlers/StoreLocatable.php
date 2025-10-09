@@ -14,34 +14,51 @@ class StoreLocatable
 
     // Handle Form
     if (!empty($dataFromRequest['locatable'])) {
-      $this->syncExtraFillable($dataFromRequest, $model);
+      $this->syncExtraLocatable($dataFromRequest, $model);
     }
   }
 
-  public function syncExtraFillable($params, $model): void
+  public function syncExtraLocatable($params, $model): void
   {
-    $cityId = $params['locatable']['city_id'] ?? null;
-    $countryId = $params['locatable']['country_id'] ?? null;
-    $provinceId = $params['locatable']['province_id'] ?? null;
-    $address = $params['locatable']['address'] ?? null;
-    $lat = $params['locatable']['latitude'] ?? null;
-    $lng = $params['locatable']['longitude'] ?? null;
+    $locatables = collect($params['locatable']);
 
-    if ($cityId || $countryId || $provinceId || $lat || $lng || $address) {
-      $locatableRepository = app('Modules\Ilocation\Repositories\LocatableRepository');
-      $systemName = strtolower(str_replace('\\', '_', get_class($model))) . '_' . $model->id;
-      $locatableRepository->updateOrCreate([
-        'system_name' => $systemName,
-        'entity_type' => get_class($model),
-        'entity_id' => $model->id,
-      ], [
-        'city_id' => $cityId,
-        'country_id' => $countryId,
-        'province_id' => $provinceId,
-        'address' => $address,
-        'latitude' => $lat,
-        'longitude' => $lng,
-      ]);
+    if (!isset($locatables[0])) {
+      $locatables = collect([$params['locatable']]);
+    }
+
+    $model->locatable()->forceDelete();
+
+    foreach ($locatables as $locatable) {
+      $cityId = $locatable['city_id'] ?? null;
+      $countryId = $locatable['country_id'] ?? null;
+      $provinceId = $locatable['province_id'] ?? null;
+      $address = $locatable['address'] ?? null;
+      $lat = $locatable['latitude'] ?? null;
+      $lng = $locatable['longitude'] ?? null;
+
+      if ($cityId || $countryId || $provinceId || $lat || $lng || $address) {
+        $dataToSave = [
+          'city_id' => $cityId,
+          'country_id' => $countryId,
+          'province_id' => $provinceId,
+          'address' => $address,
+          'latitude' => $lat,
+          'longitude' => $lng
+        ];
+
+        $availableLocales = array_keys(getSupportedLocales());
+
+        foreach ($availableLocales as $locale) {
+          if (isset($locatable[$locale]['title'])) {
+            $dataToSave[$locale]['title'] = $locatable[$locale]['title'];
+          }
+          if (isset($locatable[$locale]['description'])) {
+            $dataToSave[$locale]['description'] = $locatable[$locale]['description'];
+          }
+        }
+
+        $model->locatable()->create($dataToSave);
+      }
     }
   }
 }

@@ -15,7 +15,7 @@ return new class extends Migration {
     Schema::create('ilocation__locatables', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->increments('id');
-      $table->string('system_name')->default('default');
+      $table->string('system_name')->nullable();
       $table->string('entity_type')->default('__global__');
       $table->integer('entity_id')->default(0);
       $table->integer('country_id')->unsigned()->nullable();

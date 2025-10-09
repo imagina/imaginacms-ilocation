@@ -4,12 +4,11 @@ namespace Modules\Ilocation\Relations;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Modules\Imedia\Models\File;
 
 class LocationsRelation
 {
-    public function resolve(Model $model)
+    public function resolve(Model $model): MorphMany
     {
-        return $model->morphOne("Modules\Ilocation\Models\Locatable", 'entity');
+        return $model->morphMany("Modules\Ilocation\Models\Locatable", 'entity');
     }
 }

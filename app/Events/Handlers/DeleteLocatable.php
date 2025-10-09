@@ -13,6 +13,6 @@ class DeleteLocatable
     $model = $params['model'];
 
     //Delete Locations
-    $model->locatable()->delete();
+    $model->locatable()->forceDelete();
   }
 }
